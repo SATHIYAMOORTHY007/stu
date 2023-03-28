@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
-
+import './App.css'
+import Sidebar from './teacher/Sidebar'
+import Topbar from './teacher/Topbar'
+import './sb-admin-2.min.css'
+import Dashboard from './teacher/Dashboard'
+import UserList from './teacher/UserList'
+import Login from './Login'
+import Portal from './teacher/Portal'
+import CreateUser from './teacher/CreateUser'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import UserView from './teacher/UserView'
+import UserEdit from './teacher/UserEdit'
+import Courses from './student/courses/Courses'
+import Studentportal from './student/courses/Studentportal'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+
+        <Route path="/portal" element={<Portal />}>
+          <Route path="dashbord" element={<Dashboard />} />
+          <Route path="user-list" element={<UserList />} />
+          <Route path="createuser" element={<CreateUser />} />
+          <Route path="user-view/:id" element={<UserView />} />
+          <Route path="useredit/:id" element={<UserEdit />} />
+        </Route>
+        <Route path="/studentportal" element={<Studentportal />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-export default App;
+export default App
